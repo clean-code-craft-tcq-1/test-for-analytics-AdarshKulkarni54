@@ -2,8 +2,6 @@
 
 Design tests for Analytics functionality on a Battery Monitoring System.
 
-**Tasks** are done see below section.
-
 ## Analysis-functionality to be tested
 
 This section lists the Analysis for which _tests_ must be written.

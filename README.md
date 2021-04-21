@@ -27,10 +27,10 @@ Notification must be sent when a new report is available.
 List the dependencies of the Analysis-functionality.
 
 1. Access to the Server containing the telemetrics in a csv file
-1. _enter dependency
-1. _enter dependency
+2. Not only access to server, we also need access to csv file as well
+3. Server availability (at least every week) to store analysis report in PDF 
+4. Address and type of notification
 
-(add more if needed)
 
 ### Mark the System Boundary
 
@@ -40,10 +40,10 @@ What is included in the software unit-test? What is not? Fill this table.
 |---------------------------|---------------|---
 Battery Data-accuracy       | No            | We do not test the accuracy of data
 Computation of maximum      | Yes           | This is part of the software being developed
-Off-the-shelf PDF converter | _enter Yes/No | _enter reasoning
-Counting the breaches       | _enter Yes/No | _enter reasoning
-Detecting trends            | _enter Yes/No | _enter reasoning
-Notification utility        | _enter Yes/No | _enter reasoning
+Off-the-shelf PDF converter | No			| As it was existing library (API) used by us to convert to PDF
+Counting the breaches       | Yes		 	| This is part of the software being developed
+Detecting trends            | Yes 			| This is part of the software being developed
+Notification utility        | Yes 			| This is part of the software being developed
 
 ### List the Test Cases
 
@@ -52,11 +52,15 @@ Write tests in the form of `<expected output or action>` from `<input>` / when `
 Add to these tests:
 
 1. Write minimum and maximum to the PDF from a csv containing positive and negative readings
-1. Write "Invalid input" to the PDF when the csv doesn't contain expected data
-1. _enter a test
-1. _enter a test
-
-(add more)
+2. Write "Invalid input" to the PDF when the csv doesn't contain expected data
+3. Verify the access to server containing csv
+4. Verify the access to csv file
+5. Write "Proper input" to the PDF when the csv contains expected data
+6. Verify proper "count of breaches" and write to the PDF
+7. Write "record trends" to the PDF
+8. Verify the report stored in as "PDF" (by checking file type)
+9. Verify the availability of address and type of notification
+10. Verify whether the notification is sent 
 
 ### Recognize Fakes and Reality
 
@@ -68,8 +72,8 @@ Enter one part that's real and another part that's faked/mocked.
 |--------------------------|--------------|-----------------------------|---
 Read input from server     | csv file     | internal data-structure     | Fake the server store
 Validate input             | csv data     | valid / invalid             | None - it's a pure function
-Notify report availability | _enter input | _enter output               | _enter fake or mock
-Report inaccessible server | _enter input | _enter output               | _enter fake or mock
-Find minimum and maximum   | _enter input | _enter output               | _enter fake or mock
-Detect trend               | _enter input | _enter output               | _enter fake or mock
-Write to PDF               | _enter input | _enter output               | _enter fake or mock
+Notify report availability | PDF file	  | notification                | Fake the notification types
+Report inaccessible server | Location	  | accessible/inaccessible     | Fake the server inaccessibility
+Find minimum and maximum   | csv file	  | in range/out of range       | None - it's a pure function
+Detect trend               | csv file 	  | stored trend                | None - it's a pure function
+Write to PDF               | analysis	  | PDF file contains details   | Fake the PDF file type 
